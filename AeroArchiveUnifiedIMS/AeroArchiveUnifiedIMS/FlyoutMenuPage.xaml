@@ -2,17 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:AeroArchiveUnifiedIMS"
-             Padding="0,40,0,0"
-             IconImageSource="c:\users\leo45\source\repos\aeroarchiveunifiedims\aeroarchiveunifiedims\aeroarchiveunifiedims.uwp\assets\smalltile.scale-200.png"
-             Title="Menu"
-             x:Class="AeroArchiveUnifiedIMS.FlyoutMenuPage">
+             x:Class="AeroArchiveUnifiedIMS.FlyoutMenuPage"
+             IconImageSource="news.png"
+             Title="Menu">
     <StackLayout>
         <ListView x:Name="listview" x:FieldModifier="public">
             <ListView.ItemsSource>
                 <x:Array Type="{x:Type local:FlyoutItemPage}">
                     <local:FlyoutItemPage Title="Home" IconSource="home.png" TargetPage="{x:Type local:HomePage}"/>
                     <local:FlyoutItemPage Title="Product Information" IconSource="product.png" TargetPage="{x:Type local:ProductsPage}"/>
-                    <local:FlyoutItemPage Title="News" IconSource="news.png" TargetPage="{x:Type local:NewsPage}"/>
+                    <local:FlyoutItemPage Title="News"  IconSource="news.png" TargetPage="{x:Type local:NewsPage}"/>
                 </x:Array>
             </ListView.ItemsSource>
             <ListView.ItemTemplate>

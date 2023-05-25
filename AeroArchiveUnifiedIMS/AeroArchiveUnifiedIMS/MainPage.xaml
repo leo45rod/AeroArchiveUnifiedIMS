@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AeroArchiveUnifiedIMS.MainPage"
              xmlns:local="clr-namespace:AeroArchiveUnifiedIMS"
-            FlyoutLayoutBehavior="Popover"
+             FlyoutLayoutBehavior="Popover"
              Title="Main">
 
     <FlyoutPage.Flyout>
