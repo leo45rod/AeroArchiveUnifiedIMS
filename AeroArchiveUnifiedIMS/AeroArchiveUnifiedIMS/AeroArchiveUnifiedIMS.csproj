@@ -12,14 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\news.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Images\news.png" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
   </ItemGroup>

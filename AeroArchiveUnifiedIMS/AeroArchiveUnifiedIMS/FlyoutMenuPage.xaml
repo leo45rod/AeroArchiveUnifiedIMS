@@ -9,9 +9,9 @@
         <ListView x:Name="listview" x:FieldModifier="public">
             <ListView.ItemsSource>
                 <x:Array Type="{x:Type local:FlyoutItemPage}">
-                    <local:FlyoutItemPage Title="Home" IconSource="home.png" TargetPage="{x:Type local:HomePage}"/>
-                    <local:FlyoutItemPage Title="Product Information" IconSource="product.png" TargetPage="{x:Type local:ProductsPage}"/>
-                    <local:FlyoutItemPage Title="News"  IconSource="news.png" TargetPage="{x:Type local:NewsPage}"/>
+                    <local:FlyoutItemPage Title="Home" TargetPage="{x:Type local:HomePage}"/>
+                    <local:FlyoutItemPage Title="Product Information" TargetPage="{x:Type local:ProductsPage}"/>
+                    <local:FlyoutItemPage Title="News" TargetPage="{x:Type local:NewsPage}"/>
                 </x:Array>
             </ListView.ItemsSource>
             <ListView.ItemTemplate>
@@ -22,7 +22,6 @@
                                 <ColumnDefinition Width="33"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Image Source="{Binding IconSource}"/>
                             <Label Grid.Column="1"  Text="{Binding Title}"/>
                         </Grid>
                     </ViewCell>
