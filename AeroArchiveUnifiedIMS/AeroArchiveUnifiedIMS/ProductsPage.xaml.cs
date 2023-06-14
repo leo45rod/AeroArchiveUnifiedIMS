@@ -8,6 +8,8 @@ namespace AeroArchiveUnifiedIMS
     public partial class ProductsPage : ContentPage
     {
         private static Database database;
+        private Product selectedProduct;
+
         public static Database Database
         {
             get
@@ -20,6 +22,7 @@ namespace AeroArchiveUnifiedIMS
                 return database;
             }
         }
+
         public ProductsPage()
         {
             InitializeComponent();
@@ -52,15 +55,44 @@ namespace AeroArchiveUnifiedIMS
             else
             {
                 // User input is empty, show a message or handle the empty input case
-                await DisplayAlert("Error", "Please enter a valid string.", "OK");
+                await DisplayAlert("Error", "Please enter a valid Product.", "OK");
             }
         }
 
         private async void ClearButtonClicked(object sender, EventArgs e)
         {
-            await ProductsPage.Database.ClearDatabaseAsync();
+            await ProductsPage.Database.ClearProductsDatabaseAsync();
             collectionView.ItemsSource = await ProductsPage.Database.GetProductsAsync();
-            await DisplayAlert("Success", "Database Cleared", "OK");
+            await DisplayAlert("Success", "Products Database Cleared", "OK");
+        }
+
+        private async void UpdateButtonClicked(object sender, SelectionChangedEventArgs e)
+        {
+            if (collectionView.SelectedItem is Product selectedProduct)
+            {
+                string userInput = await DisplayPromptAsync("Update Product ID", "Please enter the updated product ID:", initialValue: selectedProduct.productID);
+                string userWarranty = await DisplayPromptAsync("Update Warranty Status", "Please enter the updated number of days left:", initialValue: selectedProduct.warrantyStatus.ToString());
+
+                if (!string.IsNullOrEmpty(userInput))
+                {
+                    selectedProduct.productID = userInput;
+                    selectedProduct.warrantyStatus = int.Parse(userWarranty);
+
+                    await ProductsPage.Database.UpdateProductAsync(selectedProduct);
+
+                    collectionView.ItemsSource = await ProductsPage.Database.GetProductsAsync();
+
+                    await DisplayAlert("Success", "Product updated.", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Error", "Please enter a valid product ID.", "OK");
+                }
+            }
+            else
+            {
+                await DisplayAlert("Error", "No product selected.", "OK");
+            }
         }
     }
 }

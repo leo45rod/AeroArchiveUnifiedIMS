@@ -13,6 +13,7 @@ namespace AeroArchiveUnifiedIMS
         {
             _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<Product>();
+            _database.CreateTableAsync<Employee>();
         }
 
         public Task<List<Product>> GetProductsAsync()
@@ -25,9 +26,34 @@ namespace AeroArchiveUnifiedIMS
             return _database.InsertAsync(product);
         }
 
-        public Task<int> ClearDatabaseAsync()
+        public Task<int> ClearProductsDatabaseAsync()
         {
             return _database.DeleteAllAsync<Product>();
+        }
+
+        public Task<int> UpdateProductAsync(Product product)
+        {
+            return _database.UpdateAsync(product);
+        }
+
+        public Task<List<Employee>> GetEmployeeAsync()
+        {
+            return _database.Table<Employee>().ToListAsync();
+        }
+
+        public Task<int> SaveEmployeeAsync(Employee employee)
+        {
+            return _database.InsertAsync(employee);
+        }
+
+        public Task<int> ClearEmployeeDatabaseAsync()
+        {
+            return _database.DeleteAllAsync<Employee>();
+        }
+
+        public Task<int> UpdateEmployeeAsync(Employee employee)
+        {
+            return _database.UpdateAsync(employee);
         }
     }
 }
