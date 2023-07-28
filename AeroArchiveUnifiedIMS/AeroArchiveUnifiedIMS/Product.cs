@@ -3,14 +3,17 @@ using System;
 
 namespace AeroArchiveUnifiedIMS
 {
+    [Table("Product")]
     public class Product
     {
         [PrimaryKey, AutoIncrement]
-
         public int ID { get; set; }
+
+        [Unique]
+        public String ProductCategory { get; set; }
         
-        public String productID { get; set; }
+        public String ProductID { get; set; }
         
-        public int warrantyStatus { get; set; }
+        public int WarrantyStatus { get; set; }
     }
 }

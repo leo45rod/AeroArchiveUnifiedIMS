@@ -5,25 +5,29 @@
              x:Class="AeroArchiveUnifiedIMS.ProductsPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="This is the Products Page!"
+            <Label Text="This is the Product Page!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             <CollectionView x:Name="collectionView" SelectionMode="Single" SelectionChanged="UpdateButtonClicked">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout>
-                            <Label Text="{Binding productID}"
+                            <Label Text="{Binding ProductCategory}"
                                    FontSize="Medium"/>
-                            <Label Text="{Binding warrantyStatus}"
+                            <Label Text="{Binding ProductID}"
+                                   FontSize="Small"/>
+                            <Label Text="{Binding WarrantyStatus}"
                                    FontSize="Small"/>
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
             <Button Text="Add Product"
-                    Clicked="AddButtonClicked" />
+                    Clicked="AddButtonClicked">
+            </Button>
             <Button Text="Clear Product Database"
-                    Clicked="ClearButtonClicked" />
+                    Clicked="ClearButtonClicked">
+            </Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

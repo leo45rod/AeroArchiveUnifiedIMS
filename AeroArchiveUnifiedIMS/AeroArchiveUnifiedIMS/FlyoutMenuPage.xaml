@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:AeroArchiveUnifiedIMS"
              x:Class="AeroArchiveUnifiedIMS.FlyoutMenuPage"
-             IconImageSource="news.png"
              Title="Menu">
     <StackLayout>
+        
         <ListView x:Name="listview" x:FieldModifier="public">
             <ListView.ItemsSource>
                 <x:Array Type="{x:Type local:FlyoutItemPage}">
@@ -20,7 +20,7 @@
                     <ViewCell>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="33"/>
+                                <ColumnDefinition Width="25"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="1"  Text="{Binding Title}"/>

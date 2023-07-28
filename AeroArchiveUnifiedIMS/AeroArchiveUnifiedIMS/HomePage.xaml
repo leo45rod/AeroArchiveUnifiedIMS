@@ -1,13 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             Title="Home"
-             x:Class="AeroArchiveUnifiedIMS.HomePage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="This is the Home Page!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+             xmlns:local="clr-namespace:AeroArchiveUnifiedIMS;assembly=AeroArchiveUnifiedIMS"
+             x:Class="AeroArchiveUnifiedIMS.HomePage"
+             Title="Home">
+    <FlexLayout Direction="Column"
+                JustifyContent="Start"
+                AlignItems="Start">
+        <Frame>
+            <ImageButton Source="{local:ImageResource AeroArchiveUnifiedIMS.home.png}"
+                         Scale="0.65"
+                         VerticalOptions="Start"
+                         HorizontalOptions="Start"/>
+        </Frame>
+        <Frame>
+            <ImageButton Source="{local:ImageResource AeroArchiveUnifiedIMS.products.png}"
+                         Scale="0.65"
+                         VerticalOptions="Start"
+                         HorizontalOptions="Start"/>
+        </Frame>
+    </FlexLayout>
+
+
+    <ContentPage.Resources>
+        
+    </ContentPage.Resources>
+
+    
 </ContentPage>

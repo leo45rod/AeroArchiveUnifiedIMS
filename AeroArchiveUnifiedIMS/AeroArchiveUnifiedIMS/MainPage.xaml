@@ -2,9 +2,26 @@
 <FlyoutPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AeroArchiveUnifiedIMS.MainPage"
-             xmlns:local="clr-namespace:AeroArchiveUnifiedIMS"
+             xmlns:local="clr-namespace:AeroArchiveUnifiedIMS;assembly=AeroArchiveUnifiedIMS"
              FlyoutLayoutBehavior="Popover"
-             Title="Main">
+             Title="Main"
+>
+    <FlyoutPage.ToolbarItems>
+        <ToolbarItem Text="Account"
+                     IconImageSource="{local:ImageResource AeroArchiveUnifiedIMS.account.png}"
+                     Priority="1"
+                     Order="Primary"
+                     Clicked="ToolbarItem_Clicked"/>
+        <ToolbarItem Text="Appearance"
+                     Priority="0"
+                     Order="Secondary"/>
+        <ToolbarItem Text="Language"
+                     Priority="0"
+                     Order="Secondary"/>
+        <ToolbarItem Text="Settings"
+                     Priority="0"
+                     Order="Secondary"/>
+    </FlyoutPage.ToolbarItems>
 
     <FlyoutPage.Flyout>
         <local:FlyoutMenuPage x:Name="flyout"/>

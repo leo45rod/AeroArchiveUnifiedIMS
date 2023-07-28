@@ -36,6 +36,7 @@ namespace AeroArchiveUnifiedIMS
 
         private async void AddButtonClicked(object sender, EventArgs e)
         {
+            string userCategory = await DisplayPromptAsync("Enter a Product Category", "Please enter product category:");
             string userInput = await DisplayPromptAsync("Enter a new Product ID", "Please enter a new product ID:");
             string userWarranty = await DisplayPromptAsync("Enter the Warranty Status", "Please enter the number of days left:");
 
@@ -43,8 +44,9 @@ namespace AeroArchiveUnifiedIMS
             {
                 await ProductsPage.Database.SaveProductAsync(new Product
                 {
-                    productID = userInput,
-                    warrantyStatus = int.Parse(userWarranty)
+                    ProductCategory = userCategory,
+                    ProductID = userInput,
+                    WarrantyStatus = int.Parse(userWarranty)
                 });
 
                 collectionView.ItemsSource = await ProductsPage.Database.GetProductsAsync();
@@ -70,13 +72,15 @@ namespace AeroArchiveUnifiedIMS
         {
             if (collectionView.SelectedItem is Product selectedProduct)
             {
-                string userInput = await DisplayPromptAsync("Update Product ID", "Please enter the updated product ID:", initialValue: selectedProduct.productID);
-                string userWarranty = await DisplayPromptAsync("Update Warranty Status", "Please enter the updated number of days left:", initialValue: selectedProduct.warrantyStatus.ToString());
+                string userCategory = await DisplayPromptAsync("Update Product category", "Please enter the updated product category:", initialValue: selectedProduct.ProductCategory);
+                string userInput = await DisplayPromptAsync("Update Product ID", "Please enter the updated product ID:", initialValue: selectedProduct.ProductID);
+                string userWarranty = await DisplayPromptAsync("Update Warranty Status", "Please enter the updated number of days left:", initialValue: selectedProduct.WarrantyStatus.ToString());
 
                 if (!string.IsNullOrEmpty(userInput))
                 {
-                    selectedProduct.productID = userInput;
-                    selectedProduct.warrantyStatus = int.Parse(userWarranty);
+                    selectedProduct.ProductCategory = userCategory;
+                    selectedProduct.ProductID = userInput;
+                    selectedProduct.WarrantyStatus = int.Parse(userWarranty);
 
                     await ProductsPage.Database.UpdateProductAsync(selectedProduct);
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLitePCL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,5 +17,5 @@ namespace AeroArchiveUnifiedIMS
 		{
 			InitializeComponent ();
 		}
-	}
+    }
 }
